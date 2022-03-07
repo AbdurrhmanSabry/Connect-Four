@@ -1,0 +1,23 @@
+body{
+    margin: 0px;
+    background-color: bisque;
+    text-align: center;
+}
+.grid{
+    text-align: center;
+    border: 1px solid grey ;
+    width: 800px ; 
+    height: 800px;
+    background-color: aquamarine;
+    margin: 10px 10px ;
+    padding: 10px 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.grid div{
+    height: 100px;
+    width: 100px;
+    background-color: blue;
+    border: 1px solid black;
+    border-radius: 50px;
+}
