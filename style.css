@@ -1,23 +1,35 @@
 body{
     margin: 0px;
     background-color: bisque;
-    text-align: center;
+   
 }
 .grid{
     text-align: center;
-    border: 1px solid grey ;
+    border: 1px solid black ;
     width: 800px ; 
     height: 800px;
-    background-color: aquamarine;
+    background-color: rgb(26, 115, 189);
     margin: 10px 10px ;
     padding: 10px 10px;
     display: flex;
     flex-wrap: wrap;
+    justify-content:space-around;
+    align-items: center;
+    border-radius:5px ;
 }
 .grid div{
     height: 100px;
     width: 100px;
-    background-color: blue;
+    background-color: rgb(255, 255, 255);
     border: 1px solid black;
-    border-radius: 50px;
+    margin: 2px 2px;
+    border-radius:50px ;
+}
+.player_one{
+  background-color: crimson;
+
+}
+.player_two{
+    background-color: blue;
+   
 }
