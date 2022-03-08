@@ -20,12 +20,7 @@ body{
     flex-grow: 1 ;
 
 }
-.header .centerContainer h1{
-    background-color: rgb(1, 31, 77);
-    border-radius: 2px;
-    margin: 1px 1px;
-    color: aliceblue;
-}
+
 .statusContainer{
     display: flex;
     flex-direction: row;
@@ -109,6 +104,7 @@ img{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin-top: 80px;
 }
 .game{
     text-align: center;
