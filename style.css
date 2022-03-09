@@ -119,7 +119,7 @@ img{
     align-items: center;
     border-radius:5px ;
 }
-.game div{
+.cell{
     height: 100px;
     width: 100px;
     background-color: rgb(255, 255, 255);
@@ -139,4 +139,6 @@ img{
     font-size:5vw ;
     margin-top: 10px;
 }
-
+.cell:hover{
+    background-color: black;
+}
