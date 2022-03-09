@@ -3,7 +3,7 @@ window.addEventListener("load", function () {
     board = document.getElementsByClassName("circle");
     announceLabel = document.getElementById("label");
     gameDifficultyLabel = document.getElementById("gameDifficulty");
-    
+    announceLabel.innerText = `Press Start to play`;
     
 
     
@@ -31,8 +31,11 @@ window.addEventListener("load", function () {
             board[index].addEventListener("click", move);
            
         }
-        gameDifficulty = prompt("Enter the level of Difficulty. Hard or Easy");
-        gameDifficultyLabel.innerText = `Single player ${gameDifficulty} `;
+        do {
+            gameDifficulty = prompt("Enter the level of Difficulty. Hard or Easy");
+        } while (!gameDifficulty.match(/^Hard|Easy$/i));
+        
+        gameDifficultyLabel.innerText = `Single player ${gameDifficulty.toUpperCase()} `;
         announceLabel.innerText = `Your Turn`;
         
             
@@ -80,7 +83,7 @@ function resetBoard() {
 
 function move(event){
     // checking wether it's player is turn or not
-    if (playerTurn === 0) {
+    if (playerTurn === 0 && moves != 42) {
         // changing the color of the right position
         
         let position =Number(event.target.getAttribute("id").substring(1));
@@ -96,6 +99,10 @@ function move(event){
                 gameResult = "Won";
                 setTimeout(result,500);
                 playerTurn = 2;
+            }else if( moves === 42) {
+                gameResult = "Draw";
+                playerTurn = 2;
+                setTimeout(result,500);
             } else {
                 setTimeout(ComputerMove,1000);
                 announceLabel.innerText = `PC Turn`;
@@ -104,21 +111,33 @@ function move(event){
             setTimeout(ComputerMove,1000);
             announceLabel.innerText = `PC Turn`;
         }   
-    } else if( playerTurn === 2){
-        // handeling the game has finished 
-        alert("The game is over.To play again, press reset")
-    }
+    } 
+    // else if( playerTurn === 2){
+    //     // handeling the game has finished 
+    //     alert("The game is over.To play again, press reset")
+    // }
 }
 function result(){
-    let playerAnswer =confirm(`You have ${gameResult} the game. 
-    Do you want to play again`);
+    let playerAnswer = "";
+    switch (gameResult) {
+        case "Draw":
+            playerAnswer = confirm(`Draw
+            Do you want to play again`);
+            break;
+        default:
+            playerAnswer =confirm(`You have ${gameResult} the game.
+            Do you want to play again`);
+            break;
+    }
+    
     if (playerAnswer) {
         resetBoard();
     } else {
         window.location.replace("mainRoom.html");
     }
-    
+    announceLabel.innerText = `Press Start to play`;
 }
+
 
 function ComputerMove() {    
         while (playerTurn === 1) {
@@ -135,6 +154,10 @@ function ComputerMove() {
                             gameResult = "lost";
                             setTimeout(result,500);
                             playerTurn = 2;
+                        }else if( moves === 42){
+                            gameResult = "Draw";
+                            playerTurn = 2;
+                            setTimeout(result,500);
                         }else{
                            playerTurn =0;
                            announceLabel.innerText = `Your Turn`;
