@@ -139,6 +139,12 @@ img{
     font-size:5vw ;
     margin-top: 10px;
 }
-.cell:hover{
+#C0:hover,#C1:hover,#C2:hover,#C3:hover,#C4:hover,#C5:hover,#C6:hover{
     background-color: black;
+}
+.red{
+    background-color: darkred;
+}
+.blue{
+    background-color: blue;
 }

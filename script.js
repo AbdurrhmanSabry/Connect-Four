@@ -1,108 +1,168 @@
-$(document).ready(function(){
-    var player = 1;
-    var winner = 0;
-    var colors = {};
-    colors[-1] = "yellow";
-    colors[1] = "red";
-    var count = 0;
+startBTN = '' ;
+playerTurn = 1 ; 
+colors = {}
+colors[1] = 'red'
+colors[-1] = 'blue'
+player1status  = '' 
+palyer2status  =  ''
+isFinish = false; 
+result = false;  
+moves= 0;
+window.addEventListener('load', function(){
+    startBTN = this.document.getElementById('start-button');
+    startBTN.addEventListener('click',function(){
+        for(var i=0 ; i < 7; i++){board[i].addEventListener("click",change)}
+        isFinish = false ; 
+        moves = 0 ; 
+        playerTurn = 1 ; 
+        player1status.innerText = ''
+        player2status.innerText = ''
 
-    $(".cell").each(function(){
-        $(this).attr("id", count);
-        $(this).attr("data-player", 0);
-        count++;
-        $(this).click(function(){
-            if(isValid($(this).attr("id"))){
-                $(this).css("background-color", colors[player]);
-                $(this).attr("data-player", player);
-                if(checkWin(player)){
-                    alert(colors[player] + " has won!");
-                    winner = player;
+   
+    })
+
+    player1status =  document.getElementById('notification1') ; 
+    player2status =  document.getElementById('notification2') ; 
+    board = document.getElementsByClassName('cell') ; 
+    console.log(board)
+    function addClass(cell, playerTurn){
+            cell.classList.add(colors[playerTurn])
+     
+    };
+    
+    function change(event){
+            if(!isFinish){
+                var index = Number(event.target.getAttribute("id").substring(1))
+                drawOnTheRightpostion(index,colors[playerTurn])
+                playerTurn *= -1
+                moves++;
+                if(moves >7){
+                        isFinish = checkWin(colors[playerTurn])
+                        if(isFinish){
+                            if( playerTurn==1){
+                                player1status.innerText = "Winner"
+                                player2status.innerText = "Losser"
+                                result = setTimeout( confirmAlert, 5000)    
+                                if(result) {reset(board)}
+                            }
+                                
+                            else{
+                                player2status.innerText = "Winner"
+                                player1status.innerText = "Losser"
+                                result = setTimeout( confirmAlert, 5000)   
+                                if(result) {reset(board)}
+                                    
+                            }
+                        }
                 }
-                player *= -1;
+                
             }
-        });
-    });
-
-    function isValid(n){
-        var id = parseInt(n);
-        if(winner !== 0){
-            return false;
+            console.log(moves)
         }
-        if($("#" + id).attr("data-player") === "0"){
-            if(id >= 35){
-                return true;
-            }
-            if($("#" + (id + 7)).attr("data-player") !== "0"){
-                return true;
-            }
-        }
-        return false;
-    }
+    
 
-    function checkWin(p){
-        //check rows
-        var chain = 0; 
-        for(var i = 0; i < 42; i+=7){
-            for(var j = 0; j < 7; j++){
-                var cell = $("#" + (i+j));
-                if(cell.attr("data-player") == p){
-                    chain++;
-                }else{
-                    chain=0;
-                }
 
-                if(chain >= 4){
-                    return true;
-                }
-            }
-            chain = 0;
-        }
-
-        //check columns
-        chain = 0;
-        for(var i = 0; i < 7; i++){
-            for(var j = 0; j < 42; j+=7){
-                var cell = $("#" + (i + j));
-                if(cell.attr("data-player") == p){
-                    chain++;
-                }else{
-                    chain = 0;
-                }
-
-                if(chain >= 4){
-                    return true;
-                }
-            }
-            chain = 0;
-        }
-
-        //check diagonals
-        var topLeft = 0;
-        var topRight = topLeft + 3;
-
-        for(var i = 0; i <3; i++){
-            for(var j = 0; j < 4; j++){
-                if($("#" + topLeft).attr("data-player") == p
-                && $("#" + (topLeft + 8)).attr("data-player") == p
-                && $("#" + (topLeft + 16)).attr("data-player") == p
-                && $("#" + (topLeft + 24)).attr("data-player") == p){
-                    return true;
-                }
-
-                if($("#" + topRight).attr("data-player") == p
-                && $("#" + (topRight + 6)).attr("data-player") == p
-                && $("#" + (topRight + 12)).attr("data-player") == p
-                && $("#" + (topRight + 18)).attr("data-player") == p){
-                    return true;
-                }
-
-                topLeft++;
-                topRight = topLeft + 3;
-            }
-            topLeft = i * 7 + 7;
-            topRight = topLeft + 3;
-        }
-        
-        return false;
-    }
 });
+function confirmAlert(){
+    confirm("Play Again ? ")
+}
+
+function reset(cells){
+  for(i = 0; i < cells.length ; i++){
+        if(cells[i].classList.value.includes(colors[1]) ){
+            cells[i].classList.remove(colors[1]) 
+        }
+        if(cells[i].classList.value.includes(colors[-1]) ){
+            cells[i].classList.remove(colors[-1]) 
+        }
+  } 
+
+}
+
+
+function checkRowsHard(color) {
+    // row seven
+    if(checkEachRowHard(35, color) || checkEachRowHard(36, color) || checkEachRowHard(37, color)){
+        return true;
+    }else if (checkEachRowHard(28, color) || checkEachRowHard(29, color) || checkEachRowHard(30, color)) {
+        return true;
+    }else if (checkEachRowHard(21, color) || checkEachRowHard(22, color) || checkEachRowHard(23, color)) {
+        return true;
+    }else if (checkEachRowHard(14, color) || checkEachRowHard(15, color) || checkEachRowHard(16, color)) {
+        return true;
+    }else if (checkEachRowHard(7, color) || checkEachRowHard(8, color) || checkEachRowHard(9, color)) {
+        return true;
+    }else if (checkEachRowHard(0, color) || checkEachRowHard(1, color) || checkEachRowHard(2, color)) {
+        return true;
+    }
+    return false;
+}
+function checkEachRowHard(number,color){
+    return board[number].classList.value.includes(color) && board[number+1].classList.value.includes(color) && board[number+2].classList.value.includes(color) && board[number+3].classList.value.includes(color) && board[number+4].classList.value.includes(color);
+}
+function checkColumnsHard(color) {
+
+    if(checkEachColumnHard(35, color) || checkEachColumnHard(28, color)){
+        return true;
+    }else if (checkEachColumnHard(36, color) || checkEachColumnHard(29, color)) {
+        return true;
+    }else if (checkEachColumnHard(37, color) || checkEachColumnHard(30, color)) {
+        return true;
+    }else if (checkEachColumnHard(38, color) || checkEachColumnHard(31, color)) {
+        return true;
+    }else if (checkEachColumnHard(39, color) || checkEachColumnHard(32, color) ) {
+        return true;
+    }else if (checkEachColumnHard(40, color) || checkEachColumnHard(33, color)) {
+        return true;
+    }else if (checkEachColumnHard(41, color) || checkEachColumnHard(34, color)) {
+        return true;
+    }
+    return false;
+}
+function checkEachColumnHard(number,color){
+    return (board[number].classList.value.includes(color) && board[number-7].classList.value.includes(color) && board[number-14].classList.value.includes(color) && board[number-21].classList.value.includes(color) && board[number-28].classList.value.includes(color));
+}
+function checkDiagonalFirstHard(color) {
+    
+     return checkEachDiagonalFromSixHard(28, color) || checkEachDiagonalFromSixHard(35, color) || checkEachDiagonalFromSixHard(29, color) ||   checkEachDiagonalFromSixHard(36, color) || checkEachDiagonalFromSixHard(30, color) || checkEachDiagonalFromSixHard(37, color) ;
+         
+}
+function checkEachDiagonalFromSixHard(number,color){
+    return (board[number].classList.value.includes(color) && board[number-6].classList.value.includes(color) && board[number-12].classList.value.includes(color) && board[number-18].classList.value.includes(color) && board[number-24].classList.value.includes(color));
+}
+function checkDiagonalSecondHard(color) {
+    
+    return checkEachDiagonalFromZeroHard(41, color) || checkEachDiagonalFromZeroHard(40, color) || checkEachDiagonalFromZeroHard(39, color) ||checkEachDiagonalFromZeroHard(34, color) || checkEachDiagonalFromZeroHard(33, color) || checkEachDiagonalFromZeroHard(32, color);
+        
+}
+function checkEachDiagonalFromZeroHard(number,color){
+   return (board[number].classList.value.includes(color) && board[number-8].classList.value.includes(color) && board[number-16].classList.value.includes(color) && board[number-24].classList.value.includes(color) && board[number-32].classList.value.includes(color));
+}
+function checkWin(color) {
+
+        return (checkRowsHard(color) || checkColumnsHard(color)  || checkDiagonalFirstHard(color)  || checkDiagonalSecondHard(color));
+    
+}
+function drawOnTheRightpostion(postion,color) {
+    // check if the seventh line is empty
+    if (!(board[postion+35].classList.value.includes(colors[1]) || board[postion+35].classList.value.includes(colors[-1]) )) {
+
+        board[postion+35].classList.add(color);      
+    } else if (!(board[postion+28].classList.value.includes(colors[1]) || board[postion+28].classList.value.includes(colors[-1]) )) {
+
+        board[postion+28].classList.add(color);       
+    } else if (!(board[postion+21].classList.value.includes(colors[1]) || board[postion+21].classList.value.includes(colors[-1]) )) {
+
+        board[postion+21].classList.add(color);
+    } else if (!(board[postion+14].classList.value.includes(colors[1]) || board[postion+14].classList.value.includes(colors[-1]) )) {
+
+        board[postion+14].classList.add(color);
+    } else if (!(board[postion+7].classList.value.includes(colors[1]) || board[postion+7].classList.value.includes(colors[-1]) )){
+
+        board[postion+7].classList.add(color);
+    } else {
+        board[postion].classList.add(color);
+        board[postion].removeEventListener("click",move);
+    }
+
+}
