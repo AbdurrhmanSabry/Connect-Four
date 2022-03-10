@@ -1,74 +1,72 @@
-*{
-    padding:0;
-    margin:0;
-    
+* {
+  padding: 0;
+  margin: 0;
 }
 
-body{
-    background-image: linear-gradient(to right,#2556B7, #E4214C);
+body {
+  background-image: linear-gradient(to right, #2556b7, #e4214c);
 }
-.box{
-    margin: auto;
-    width: 100vw;
-    height: 100vh;
-    text-align: center;
+.box {
+  margin: auto;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
 }
 
-.gameframe{
-    background-color: rgb(0,17,51);
-    /*
+.gameframe {
+  background-color: rgb(0, 17, 51);
+  /*
     smokyblack rgb(26,0,8)
     darkblue rgb(0,17,51)
     */
 
-    border-radius: 15px;
-    margin: auto;
-    width: 450px;
-    height: 400px;
-    display: flex;
-    flex-wrap: wrap;
+  border-radius: 15px;
+  margin: auto;
+  width: 450px;
+  height: 400px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.circle{
-    border: 2px solid white;
-    background-color: white;
-    border-radius: 50px;
-    width: 50px;
-    height: 50px;
-    margin: 5px;
+.circle {
+  border: 2px solid white;
+  background-color: white;
+  border-radius: 50px;
+  width: 50px;
+  height: 50px;
+  margin: 5px;
 }
-.red{
-    background-color: rgb(204,0,34);
+.red {
+  background-color: rgb(204, 0, 34);
 }
-.blue{
-    background-color: rgb(59,0,179);
+.blue {
+  background-color: rgb(59, 0, 179);
 }
-.circle:hover{
-    background-color: lightgoldenrodyellow;
-}
-
-.button{
-    cursor: pointer;
-    margin: 10px auto;
-    width: 13rem;
-    height: 4rem;
-    padding: 5px;
-    border-radius: 2rem;
-    border: none;
-    background-color: rgba(0, 0, 0, 0.4);
-    color: white;
-    font-size: 2rem;
-
+.circle:hover {
+  background-color: lightgoldenrodyellow;
 }
 
-.button:hover{
-    background-color: rgba(241,156,187,0.6);
+.button {
+  cursor: pointer;
+  margin: 10px auto;
+  width: 13rem;
+  height: 4rem;
+  padding: 5px;
+  border-radius: 2rem;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  font-size: 2rem;
 }
-#Title{
-    color: rgba(255, 255, 255,0.5);
-    font-size: 4rem;
+
+.button:hover {
+  background-color: rgba(241, 156, 187, 0.6);
 }
-h3{
-    color: rgba(255, 255, 255,0.5);
-    font-size: 2rem;
+#Title {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 4rem;
+}
+h3 {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 2rem;
 }
