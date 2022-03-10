@@ -5,7 +5,16 @@ window.addEventListener("load", function () {
    aboutButton = this.document.getElementById("aboutButton");
    // adding event to each button
    singleButton.addEventListener("click", function () {
-       window.location.replace("./singlePlayer.html");
+
+       window.location.replace("./singleInfo.html");
         // redirect To the single player Room
     })
+    multiButton.addEventListener("click", function () {
+        window.location.replace("./multiPlayer.html");
+        
+     })
+     aboutButton.addEventListener("click", function () {
+      //  window.location.replace("./singlePlayer.html");
+     
+     })
 });

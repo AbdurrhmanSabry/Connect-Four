@@ -9,32 +9,24 @@ window.addEventListener("load", function () {
     
     // flags to check whether the game is started , reset otr player is turn or not
     started = 0 ;
-    reset = -1 ;
     playerTurn =0;
-    playerColor ="red";
-    computerColor ="blue";
-    gameDifficulty = "";
+    playerColor = sessionStorage.getItem("color").toLowerCase();
+    computerColor =setComputer() ;
+    gameDifficulty = sessionStorage.getItem("difficulty");
     startButton =  document.getElementById("start-button");
-    resetButton = document.getElementById("reset-button");
+    backButton = document.getElementById("change-button");
     gameResult = "";
     
     //adding Event to start the game
     startButton.addEventListener("click", function () {
         started = 1;
-        reset = 0;
-        moves = 0;
-        /*
-        add IDS Dynamically
-        */
+        moves = 0;  
         // adding event to each elment in the board to allow the player to play
         for (let index = 0 ; index < 7; index++) {
             board[index].addEventListener("click", move);
            
         }
-        do {
-            gameDifficulty = prompt("Enter the level of Difficulty. Hard or Easy");
-        } while (!gameDifficulty.match(/^Hard|Easy$/i));
-        
+
         gameDifficultyLabel.innerText = `Single player ${gameDifficulty.toUpperCase()} `;
         announceLabel.innerText = `Your Turn`;
         
@@ -48,24 +40,23 @@ window.addEventListener("load", function () {
         }
     });
     // adding event to allow the player reset the board
-    resetButton.addEventListener("click", function () {
-        if (started === 1) {
-           // asking the player whether he is sure he wnts to reset
-           if (playerTurn !== 2) {
-                let playerResponse= confirm("Are you sure you want to reset the game");
-                if (playerResponse) {
-                    resetBoard();
-                }
-           }else{
-               resetBoard();
-           }
-           
-            
-        } else if( started === 0){
-            alert("You have to start the game first");
+    backButton.addEventListener("click", function () {
+        // asking the player whether he is sure he wnts to leave
+        
+        let playerResponse= confirm("Are you sure you want to leave the game room");
+        if (playerResponse) {
+            window.location.replace("./mainRoom.html")
         }
+ 
     })
 });
+function setComputer(){
+    if(sessionStorage.getItem("color").match(/red/i)){
+        return "blue"
+    }else{
+        return "red"
+    }
+}
 function resetBoard() {
     for (let index = 0; index < board.length; index++) {
         if (board[index].classList.value.includes(playerColor)) {
@@ -112,10 +103,7 @@ function move(event){
             announceLabel.innerText = `PC Turn`;
         }   
     } 
-    // else if( playerTurn === 2){
-    //     // handeling the game has finished 
-    //     alert("The game is over.To play again, press reset")
-    // }
+    
 }
 function result(){
     let playerAnswer = "";

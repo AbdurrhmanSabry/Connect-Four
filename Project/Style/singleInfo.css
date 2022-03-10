@@ -45,7 +45,7 @@ button:hover{
 }
 .ContainerData{
     width: 30rem;
-    height: 15rem;
+    height: 20rem;
     margin: 10px auto;
     margin-top: 4rem;
     display: flex;
@@ -55,6 +55,7 @@ button:hover{
     background-color: rgba(0, 0, 0, 0.4);
     padding: 0.5rem 0.5rem;
     border-radius: 0.5rem;
+    
 }
 h4{
     color:white;
@@ -64,13 +65,18 @@ h4{
 label{
     color: white;
     font-size: 1rem;
+    margin:  0.5rem 0.5rem 0.5rem 0.5rem;
+    
 }
 input {
     margin-bottom: 10px;
     border: 1px solid #ccc;
-    border-radius: 3px;
+    border-radius: 0.5rem;
     width: 25rem;
     height: 2rem ;
     padding: 0.5rem 0.5rem;
+    background-color: rgba(255,255,255,0.8);
 }
-
+input:hover{
+    background-color: rgba(230,242,255,0.6);
+}
