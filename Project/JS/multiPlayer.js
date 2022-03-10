@@ -63,9 +63,12 @@ window.addEventListener('load', function(){
                                 player2status.innerText = "Losser"
                                 player2status.classList.add('notification')
                                 result = setTimeout( confirmAlert, 1000)    
-                                if(result) {reset(board)}
-                                else{
-                                    console.log(result)
+                                if(result==1) {
+                                    console.log("result : "+result)
+                                    reset(board)
+                                }
+                                else if(result != 1){
+                                    console.log("result : "+result)
                                     window.location.replace("../html/mainRoom.html")
                                 }
                             }
@@ -79,9 +82,12 @@ window.addEventListener('load', function(){
                                 player1status.innerText = "Losser"
                                 player1status.classList.add('notification')
                                 result = setTimeout( confirmAlert, 1000)   
-                                if(result) {reset(board)}
-                                else{
-                                    console.log(result)
+                                if(result==1) {
+                                    console.log("result : "+result)
+                                    reset(board)
+                                }
+                                else if(result != 1){
+                                    console.log("result : "+result)
                                     window.location.replace("../html/mainRoom.html")
                                 }
                                     
@@ -94,10 +100,11 @@ window.addEventListener('load', function(){
     }
 });
 
-
+//alert firing while game ending and asking to play again 
 function confirmAlert(){
     confirm("Play Again ? ")
 }
+//reaeting cells by removing all events and classes to play again 
 function reset(cells){
   for(i = 0; i < cells.length ; i++){
         if(cells[i].classList.value.includes(colors[1]) ){
@@ -109,6 +116,7 @@ function reset(cells){
   } 
 
 }
+
 function checkRowsHard(color) {
     // row seven
     if(checkEachRowHard(35, color) || checkEachRowHard(36, color) || checkEachRowHard(37, color)){
@@ -195,7 +203,6 @@ function drawOnTheRightpostion(postion,color) {
     }
 
 }
-
 function random(){
    return Math.floor(Math.random() * (11-1)+1) ; 
 }
