@@ -17,8 +17,8 @@ window.addEventListener('load', function(){
     num1 = random() ; 
     num2 = random() ; 
     if(num1==num2) num2 = num1 +1 ;
-    document.getElementById("img1").src =`/images/${num1}.png` ;
-    document.getElementById("img2").src =`/images/${num2}.png` ;
+    document.getElementById("img1").src =`../Media/${num1}.png` ;
+    document.getElementById("img2").src =`../Media/${num2}.png` ;
     console.log(num1)
     console.log(num2)
     player1score  = document.getElementById("score1")
@@ -66,7 +66,7 @@ window.addEventListener('load', function(){
                                 if(result) {reset(board)}
                                 else{
                                     console.log(result)
-                                    window.location.replace("https://www.w3schools.com")
+                                    window.location.replace("../html/mainRoom.html")
                                 }
                             }
                                 
@@ -82,7 +82,7 @@ window.addEventListener('load', function(){
                                 if(result) {reset(board)}
                                 else{
                                     console.log(result)
-                                    window.location.replace("https://www.w3schools.com")
+                                    window.location.replace("../html/mainRoom.html")
                                 }
                                     
                             }
