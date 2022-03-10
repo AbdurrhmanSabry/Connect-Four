@@ -8,65 +8,96 @@ palyer2status  =  ''
 isFinish = false; 
 result = false;  
 moves= 0;
+score1 = 0; 
+score2 = 0;
+num1 = 0 ; 
+num2 = 0 ; 
+
 window.addEventListener('load', function(){
+    num1 = random() ; 
+    num2 = random() ; 
+    if(num1==num2) num2 = num1 +1 ;
+    document.getElementById("img1").src =`/images/${num1}.png` ;
+    document.getElementById("img2").src =`/images/${num2}.png` ;
+    console.log(num1)
+    console.log(num2)
+    player1score  = document.getElementById("score1")
+    player1score.innerText = '0'
+    player1score.classList.add('score')
+    player2score  = document.getElementById("score2")
+    player2score.innerText = '0' 
+    player2score.classList.add('score')
+    player1status =  document.getElementById('notification1') ; 
+    player2status =  document.getElementById('notification2') ; 
+    board = document.getElementsByClassName('cell') ; 
     startBTN = this.document.getElementById('start-button');
     startBTN.addEventListener('click',function(){
-        for(var i=0 ; i < 7; i++){board[i].addEventListener("click",change)}
         isFinish = false ; 
         moves = 0 ; 
         playerTurn = 1 ; 
         player1status.innerText = ''
         player2status.innerText = ''
-
-   
+        for(var i=0 ; i < 7; i++){board[i].addEventListener("click",change)}
     })
-
-    player1status =  document.getElementById('notification1') ; 
-    player2status =  document.getElementById('notification2') ; 
-    board = document.getElementsByClassName('cell') ; 
-    console.log(board)
+    
+  
     function addClass(cell, playerTurn){
             cell.classList.add(colors[playerTurn])
-     
     };
-    
     function change(event){
+        console.log(isFinish)
             if(!isFinish){
                 var index = Number(event.target.getAttribute("id").substring(1))
                 drawOnTheRightpostion(index,colors[playerTurn])
-                playerTurn *= -1
                 moves++;
                 if(moves >7){
+                    console.log("move played")
                         isFinish = checkWin(colors[playerTurn])
                         if(isFinish){
                             if( playerTurn==1){
                                 player1status.innerText = "Winner"
+                                score1++;
+                                player1score.innerText = score1.toString() ;
+                                player1score.classList.add('score')
+                                player1status.classList.add('notification')
                                 player2status.innerText = "Losser"
-                                result = setTimeout( confirmAlert, 5000)    
+                                player2status.classList.add('notification')
+                                result = setTimeout( confirmAlert, 1000)    
                                 if(result) {reset(board)}
+                                else{
+                                    console.log(result)
+                                    window.location.replace("https://www.w3schools.com")
+                                }
                             }
                                 
                             else{
                                 player2status.innerText = "Winner"
+                                score2++;
+                                player2score.innerText = score2.toString() ;
+                                player2score.classList.add('score')
+                                player2status.classList.add('notification')
                                 player1status.innerText = "Losser"
-                                result = setTimeout( confirmAlert, 5000)   
+                                player1status.classList.add('notification')
+                                result = setTimeout( confirmAlert, 1000)   
                                 if(result) {reset(board)}
+                                else{
+                                    console.log(result)
+                                    window.location.replace("https://www.w3schools.com")
+                                }
                                     
                             }
                         }
                 }
-                
+                playerTurn *= -1
             }
             console.log(moves)
-        }
-    
-
-
+    }
 });
+
+
 function confirmAlert(){
     confirm("Play Again ? ")
 }
-
 function reset(cells){
   for(i = 0; i < cells.length ; i++){
         if(cells[i].classList.value.includes(colors[1]) ){
@@ -78,8 +109,6 @@ function reset(cells){
   } 
 
 }
-
-
 function checkRowsHard(color) {
     // row seven
     if(checkEachRowHard(35, color) || checkEachRowHard(36, color) || checkEachRowHard(37, color)){
@@ -165,4 +194,8 @@ function drawOnTheRightpostion(postion,color) {
         board[postion].removeEventListener("click",move);
     }
 
+}
+
+function random(){
+   return Math.floor(Math.random() * (11-1)+1) ; 
 }
