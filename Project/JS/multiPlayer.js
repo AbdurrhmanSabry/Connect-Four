@@ -41,6 +41,14 @@ window.addEventListener('load', function () {
       board[i].addEventListener('click', change);
     }
   });
+  homeBtn = this.document.getElementById('home-button');
+  homeBtn.addEventListener('click', function () {
+    result1 = confirm('Want to leave game ? ');
+    if (result1) {
+      console.log('result : ' + result1);
+      window.location.replace('../html/mainRoom.html');
+    }
+  });
 
   function addClass(cell, playerTurn) {
     cell.classList.add(colors[playerTurn]);
@@ -271,5 +279,5 @@ function drawOnTheRightpostion(postion, color) {
   }
 }
 function random() {
-  return Math.floor(Math.random() * (11 - 1) + 1);
+  return Math.floor(Math.random() * (7 - 1) + 1);
 }
