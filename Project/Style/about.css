@@ -44,8 +44,8 @@ button:hover{
     background-color: rgba(241,156,187,0.6);
 }
 .ContainerData{
-    width: 30rem;
-    height: 20rem;
+    width: 35rem;
+    height: 30rem;
     margin: 10px auto;
     margin-top: 4rem;
     display: flex;
@@ -62,21 +62,7 @@ h4{
     margin-bottom: 0.5rem;
     font-size: 2rem;
 }
-label{
+p{
     color: white;
-    font-size: 1rem;
-    margin:  0.5rem 0.5rem 0.5rem 0.5rem;
-    
-}
-select {
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 0.5rem;
-    width: 25rem;
-    height: 2rem ;
-    padding: 0.5rem 0.5rem;
-    background-color: rgba(255,255,255,0.8);
-}
-select:hover{
-    background-color: rgba(230,242,255,0.6);
+    font-size:1.5rem ;
 }

@@ -1,5 +1,5 @@
 window.addEventListener('load', function () {
-  boardContainer = document.getElementsByClassName('gameframe')[0];
+  boardContainer = document.getElementsByClassName('board')[0];
   board = document.getElementsByClassName('circle');
   announceLabel = document.getElementById('label');
   gameDifficultyLabel = document.getElementById('gameDifficulty');

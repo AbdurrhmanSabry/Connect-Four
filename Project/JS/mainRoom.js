@@ -10,11 +10,11 @@ window.addEventListener("load", function () {
         // redirect To the single player Room
     })
     multiButton.addEventListener("click", function () {
-        window.location.replace("./multiPlayer.html");
+        window.location.replace("./multiInfo.html");
         
      })
      aboutButton.addEventListener("click", function () {
-      //  window.location.replace("./singlePlayer.html");
+       window.location.replace("./about.html");
      
      })
 });

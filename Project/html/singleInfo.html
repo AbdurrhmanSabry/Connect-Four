@@ -12,26 +12,27 @@
 </head>
 <body>
     <h1>Connect Four</h1>
-   
-    
     <div class="ContainerData">
         <h4>Game Info</h4>
-        <!-- <label for="PlayerName">player Name</label>
-        <input type="text" name="PlayerName" id="PlayerName"> -->
         <label for="Difficulty">Difficulty</label>
-        <input type="text" name="Difficulty" id="Difficulty" placeholder="Easy or Hard">
+        <select name="Difficulty" id="Difficulty">
+            <option value="Easy">Easy</option>
+            <option value="Hard">Hard</option>
+        </select>
         <label for="Color">Color</label>
-        <input type="text" name="Color" id="Color" placeholder="Red or Blue">
+        <select name="Color" id="Color">
+            <option value="Red" style="color: red;">Red</option>
+            <option value="Blue" style="color: blue;">Blue</option>
+        </select>
     </div>
     <div class="buttonsContainer">
         <button id="moveToGameRoom">
             Go To Game Room
-        </button >
+        </button>
         <button id="goBack">
-            Go Back To Main Room 
-        </button >
-        
+            Go Back To Main Room
+        </button>
     </div>
-    
 </body>
+
 </html>
