@@ -1,136 +1,131 @@
-body {
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background: rgb(27, 26, 26);
+}
+body{
   font-family: monospace;
   font-size: 10pt;
   font-weight: 500;
+  background-image: linear-gradient(90deg, #ad5389, #3c1053);
+  
 }
-.header {
-  width: 100%;
-  height: 15hv;
-  position: relative;
-  max-width: 100%;
-}
-.centerContainer {
-  text-align: center;
-  flex-grow: 1;
-}
-.statusContainer {
+.container{
   display: flex;
   flex-direction: row;
-  width: 80%;
   flex-wrap: nowrap;
-  justify-content: space-around;
-  color: aliceblue;
-  margin: auto;
-  padding: 5px 5px;
-}
-.circle {
-  width: 100px;
-  height: 100px;
-  border-radius: 50px;
-  margin: 10px auto;
-  text-align: center;
-}
-.player_1 {
-  position: absolute;
-  left: 5px;
-  align-items: center;
-  padding: 10px 10px;
-  margin: 10px;
-}
-img {
-  width: 400px;
-  height: 400px;
-  border: 2px solid black;
-  border-radius: 50px;
-}
-.player1 {
-  background-color: crimson;
-}
-.player_1_name {
-  width: 60%;
-  font-size: 2vw;
-  font-family: 'VT323', monospace;
-  text-align: center;
-  height: 50px;
-  margin: 10px auto;
-}
-.player_2 {
-  position: absolute;
-  right: 5px;
-  align-items: center;
-  padding: 10px 10px;
-  margin: 10px;
-}
-.player2 {
-  background-color: rgb(20, 33, 220);
-}
-.player_2_name {
-  width: 60%;
-  font-size: 2vw;
-  font-family: 'VT323', monospace;
-  text-align: center;
-  height: 50px;
-  margin: 10px auto;
-}
-.player_one {
-  background-color: brown;
-}
-.player_two {
-  background-color: blue;
-}
-.score {
-  font-size: 5vw;
-}
-.new_game {
-  border-radius: 10px;
-  border: 2px solid black;
-  font-size: 2.2vw;
-  cursor: pointer;
-  width: 200px;
-  background-color: darkgreen;
-  margin: auto;
-  text-align: center;
-}
-.game_container {
-  display: flex;
-  flex-direction: row;
   justify-content: center;
-  margin-top: 80px;
+  align-items: center;  
 }
-.game {
+.gameContainer{
+  margin-left: 1rem ;
+  margin-right: 1rem ;
   text-align: center;
-  border: 1px solid black;
-  width: 800px;
-  height: 800px;
-  background-color: rgb(26, 115, 189);
-  padding: 10px 10px;
+}
+#label{
+    margin-bottom: 20px;
+}
+#Title {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 2.5rem;
+}
+h3 {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1.5rem;
+}
+.board{
+  background-color: rgb(0, 17, 51);
+  border-radius: 15px;
+  margin: auto;
+  width: 450px;
+  height: 400px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  flex: 0 0 ;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  border-radius: 5px;
+  
 }
-.cell {
-  height: 100px;
-  width: 100px;
-  background-color: rgb(255, 255, 255);
-  border: 1px solid black;
-  margin: 2px 2px;
+.circle {
+  border: 2px solid white;
+  background-color: white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+  
+}
+.circlePlayer{
+  border: 2px solid white;
+  background-color: white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+}
+
+.playerInfo {
+  padding: 10px 10px;
+  margin: 10px;
+  flex: 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  height: 25rem;
+}
+img {
+  width: 15em;
+  height: 8em;
+  border: 2px solid black;
   border-radius: 50px;
 }
-.player_one {
-  background-color: crimson;
+
+.playerName {
+  width: 60%;
+  font-size: 2vw;
+  font-family: 'VT323', monospace;
+  text-align: center;
+  height: 50px;
+  margin: 10px auto;
+  color: white;
 }
-.player_two {
+
+
+.score {
+  font-size: 4rem;
+  color: white;
+}
+
+.notification {
+  font-size: 2.5rem;
+  margin-top: 10px;
+  color: white;
+}
+.red {
+  background-color: darkred;
+}
+.blue {
   background-color: blue;
 }
-.notification {
-  font-size: 5vw;
-  margin-top: 10px;
+.button {
+  cursor: pointer;
+  margin: 10px auto;
+  width: 13rem;
+  height: 4rem;
+  padding: 5px;
+  border-radius: 2rem;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  font-size: 2rem;
+}
+
+.button:hover {
+  background-color: rgba(241, 156, 187, 0.6);
 }
 #C0,
 #C1,
@@ -149,274 +144,4 @@ img {
 #C5:hover,
 #C6:hover {
   background-color: black;
-}
-.red {
-  background-color: darkred;
-}
-.blue {
-  background-color: blue;
-}
-.button {
-  background-color: darkolivegreen;
-  font-family: monospace;
-  font-size: 10pt;
-  font-weight: 500;
-  width: 150px;
-  height: 50px;
-  cursor: pointer;
-}
-@media (max-width: 1750px) {
-  img {
-    width: 200px;
-    height: 200px;
-    border: 2px solid black;
-    border-radius: 50px;
-  }
-  .circle {
-    width: 100px;
-    height: 100px;
-    border-radius: 50px;
-    margin: 10px auto;
-    text-align: center;
-  }
-  .player_2_name {
-    width: 55%;
-    font-size: 1.5vw;
-    font-family: 'VT323', monospace;
-    text-align: center;
-    height: 40px;
-    margin: 10px auto;
-  }
-  .player_1_name {
-    width: 55%;
-    font-size: 1.5vw;
-    font-family: 'VT323', monospace;
-    text-align: center;
-    height: 40px;
-    margin: 10px auto;
-  }
-  .game {
-    text-align: center;
-    border: 1px solid black;
-    width: 750px;
-    height: 700px;
-    background-color: rgb(26, 115, 189);
-    padding: 10px 10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    border-radius: 5px;
-  }
-  .cell {
-    height: 95px;
-    width: 95px;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid black;
-    margin: 2px 2px;
-    border-radius: 50px;
-  }
-  .red {
-    background-color: darkred;
-  }
-  .blue {
-    background-color: blue;
-  }
-}
-@media (max-width: 1500px) {
-  img {
-    width: 170px;
-    height: 170px;
-    border: 2px solid black;
-    border-radius: 50px;
-  }
-  .circle {
-    width: 75px;
-    height: 75px;
-    border-radius: 50px;
-    margin: 10px auto;
-    text-align: center;
-  }
-  .player_2_name {
-    width: 35%;
-    font-size: 1vw;
-    font-family: 'VT323', monospace;
-    text-align: center;
-    height: 30px;
-    margin: 10px auto;
-  }
-  .player_1_name {
-    width: 35%;
-    font-size: 1vw;
-    font-family: 'VT323', monospace;
-    text-align: center;
-    height: 30px;
-    margin: 10px auto;
-  }
-
-  .game {
-    text-align: center;
-    border: 1px solid black;
-    width: 650px;
-    height: 600px;
-    background-color: rgb(26, 115, 189);
-    padding: 10px 10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    border-radius: 5px;
-  }
-  .cell {
-    height: 80px;
-    width: 80px;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid black;
-    margin: 2px 2px;
-    border-radius: 50px;
-  }
-  .red {
-    background-color: darkred;
-  }
-  .blue {
-    background-color: blue;
-  }
-}
-@media (max-width: 1250px) {
-  img {
-    width: 170px;
-    height: 170px;
-    border: 2px solid black;
-    border-radius: 50px;
-  }
-  .circle {
-    width: 50px;
-    height: 50px;
-    border-radius: 50px;
-    margin: 10px auto;
-    text-align: center;
-  }
-  .player_2_name {
-    width: 25%;
-    font-size: 0.8vw;
-    font-family: 'VT323', monospace;
-    text-align: center;
-    height: 20px;
-    margin: 10px auto;
-  }
-  .player_1_name {
-    width: 25%;
-    font-size: 0.8vw;
-    font-family: 'VT323', monospace;
-    text-align: center;
-    height: 20px;
-    margin: 10px auto;
-  }
-
-  .game {
-    text-align: center;
-    border: 1px solid black;
-    width: 600px;
-    height: 700px;
-    background-color: rgb(26, 115, 189);
-    padding: 10px 10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    border-radius: 5px;
-  }
-  .cell {
-    height: 70px;
-    width: 70px;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid black;
-    margin: 2px 2px;
-    border-radius: 50px;
-  }
-  .red {
-    background-color: darkred;
-  }
-  .blue {
-    background-color: blue;
-  }
-}
-@media (max-width: 1000px) {
-  img {
-    width: 125px;
-    height: 125px;
-    border: 2px solid black;
-    border-radius: 50px;
-  }
-  .circle {
-    width: 25px;
-    height: 25px;
-    border-radius: 50px;
-    margin: 10px auto;
-    text-align: center;
-  }
-
-  .game {
-    text-align: center;
-    border: 1px solid black;
-    width: 550px;
-    height: 700px;
-    background-color: rgb(26, 115, 189);
-    padding: 10px 10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    border-radius: 5px;
-  }
-  .cell {
-    height: 70px;
-    width: 70px;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid black;
-    margin: 2px 2px;
-    border-radius: 50px;
-  }
-  .red {
-    background-color: darkred;
-  }
-  .blue {
-    background-color: blue;
-  }
-}
-@media (max-width: 750px) {
-  img {
-    display: none;
-    width: 100px;
-    height: 100px;
-    border: 2px solid black;
-    border-radius: 50px;
-  }
-  .game {
-    text-align: center;
-    border: 1px solid black;
-    width: 500px;
-    height: 700px;
-    background-color: rgb(26, 115, 189);
-    padding: 10px 10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    border-radius: 5px;
-  }
-  .cell {
-    height: 60px;
-    width: 60px;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid black;
-    margin: 2px 2px;
-    border-radius: 50px;
-  }
-  .red {
-    background-color: darkred;
-  }
-  .blue {
-    background-color: blue;
-  }
 }

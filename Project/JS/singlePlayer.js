@@ -17,15 +17,19 @@ window.addEventListener('load', function () {
 
   //adding Event to start the game
   startButton.addEventListener('click', function () {
-    started = 1;
-    moves = 0;
-    // adding event to each elment in the board to allow the player to play
-    for (let index = 0; index < 7; index++) {
-      board[index].addEventListener('click', move);
-    }
+    if (started === 0) {
+      started = 1;
+      moves = 0;
+      // adding event to each elment in the board to allow the player to play
+      for (let index = 0; index < 7; index++) {
+        board[index].addEventListener('click', move);
+      }
 
-    gameDifficultyLabel.innerText = `Single player ${gameDifficulty.toUpperCase()} `;
-    announceLabel.innerText = `Your Turn`;
+      gameDifficultyLabel.innerText = `Single player ${gameDifficulty.toUpperCase()} `;
+      announceLabel.innerText = `Your Turn`;
+        
+    }
+    
   });
   // Sending alert to the player to notify him that the game has not been started
   boardContainer.addEventListener('click', function () {
